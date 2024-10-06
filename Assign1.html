@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>MDIA 2294</title>
+	
+	<style>
+	    thead{
+	        font-weight:bold;
+	    }
+	    
+	    td{
+	        padding-left:5px;
+	        padding-right:5px;	        
+	    }
+	    
+	    td.sub-total{
+	        text-align:right;	        
+	    }
+	</style>
+</head>
+<body>
+	<h1>MDIA 2294: ACME Corp Invoice</h1>
+	
+	<table>
+	    <thead>
+	        <tr>
+	            <td>ITEM</td>
+	            <td>DESCRIPTION</td>
+	            <td>QTY</td>
+	            <td>PRICE</td>
+	            <td>LINE TOTAL</td>
+	        </tr>
+	    </thead>
+	    <tbody>
+	        <tr>
+	            <td>1</td>
+	            <td><input id="line-1-description" type="text" size="40" value="Anvil" /></td>
+	            <td><input id="line-1-quantity" type="text" size="3" value="5" /></td>
+	            <td><input id="line-1-price" type="text" size="6" value="35.00" /></td>
+	            <td class="sub-total"><span id="line-1"></span></td>
+	        </tr>
+	        <tr>
+	            <td>2</td>
+	            <td><input id="line-2-description" type="text" size="40" value="Rocket Skates (each)" /></td>
+	            <td><input id="line-2-quantity" type="text" size="3" value="2" /></td>
+	            <td><input id="line-2-price" type="text" size="6" value="24.99" /></td>
+	            <td class="sub-total"><span id="line-2"></span></td>
+	        </tr>
+	        <tr>
+	            <td>3</td>
+	            <td><input id="line-3-description" type="text" size="40" value="Giant Magnet" /></td>
+	            <td><input id="line-3-quantity" type="text" size="3" value="1" /></td>
+	            <td><input id="line-3-price" type="text" size="6" value="125.50" /></td>
+	            <td class="sub-total"><span id="line-3"></span></td>
+	        </tr>
+	        <tr>
+	            <td>4</td>
+	            <td><input id="line-4-description" type="text" size="40" value="Ball bearings" /></td>
+	            <td><input id="line-4-quantity" type="text" size="3" value="500" /></td>
+	            <td><input id="line-4-price" type="text" size="6" value="0.25" /></td>
+	            <td class="sub-total"><span id="line-4"></span></td>
+	        </tr>
+	        <tr>
+	            <td>5</td>
+	            <td><input id="line-5-description" type="text" size="40" value="Portable holes" /></td>
+	            <td><input id="line-5-quantity" type="text" size="3" value="12" /></td>
+	            <td><input id="line-5-price" type="text" size="6" value="15.25" /></td>
+	            <td class="sub-total"><span id="line-5"></span></td>
+	        </tr>
+	    </tbody>
+	    <tfoot>
+	        <tr>
+	            <td colspan="4" style="text-align:right;">SUB TOTAL</td>  
+	            <td class="sub-total"><span id="sub-total"></span></td>	        
+	        </tr>
+	        <tr>
+	            <td colspan="4" style="text-align:right;">DISCOUNT</td>  
+	            <td class="sub-total"><span id="discount"></span></td>	        
+	        </tr>
+	        <tr>
+	            <td colspan="4" style="text-align:right;">TAX</td>  
+	            <td class="sub-total"><span id="tax"></span></td>	        
+	        </tr>
+	        <tr>
+	            <td colspan="4" style="text-align:right;">TOTAL</td>  
+	            <td class="sub-total" style="border-top:solid black 1px"><span id="Total"></span></td>	        
+	        </tr>
+	    </tfoot>	    
+	</table>
+	
+	<div><button id="calculate">Calculate</button></div>
+	<div>NOTE: discounts of 10% are given to orders over $250</div>
+
+	<script>
+			/* Assignment 1: ACME Corp Invoice Calculator 
+			   Name: Bon Duong
+			   Student ID: A01361079 */
+	    function calculate() {
+                /* Use the following steps to complete your assignment.
+
+                @NOTE: Do not include these comments in your final submission. 
+                       Your final submission MUST include your own comments. */
+
+				// Define constants for discount, tax rates, and thresholds
+				let discountThreshold = 250;
+				let taxRate = 0.12;
+				let discountRate = 0.10; 
+				
+				// Retrieve the quantities & price for each line 
+				let quantity_1 = document.getElementById('line-1-quantity').value;
+				let price_1 = document.getElementById('line-1-price').value;
+				// Calculate the total for line 1
+				let lineTotal1 = quantity_1 * price_1;
+
+				let quantity_2 = document.getElementById('line-2-quantity').value;
+				let price_2 = document.getElementById('line-2-price').value;
+				// Calculate the total for line 2
+				let lineTotal2 = quantity_2 * price_2;
+
+				let quantity_3 = document.getElementById('line-3-quantity').value;
+				let price_3 = document.getElementById('line-3-price').value;
+				// Calculate the total for line 3
+				let lineTotal3 = quantity_3 * price_3;
+
+				let quantity_4 = document.getElementById('line-4-quantity').value;
+				let price_4 = document.getElementById('line-4-price').value;
+				// Calculate the total for line 4
+				let lineTotal4 = quantity_4 * price_4;
+
+				let quantity_5 = document.getElementById('line-5-quantity').value;
+				let price_5 = document.getElementById('line-5-price').value;
+				// Calculate the total for line 5
+				let lineTotal5 = quantity_5 * price_5;
+
+				// Display each line total to the screen to two decimal places
+				document.getElementById("line-1").textContent = "$ " + lineTotal1.toFixed(2);
+				document.getElementById("line-2").textContent = "$ " + lineTotal2.toFixed(2);
+				document.getElementById("line-3").textContent = "$ " + lineTotal3.toFixed(2);
+				document.getElementById("line-4").textContent = "$ " + lineTotal4.toFixed(2);
+				document.getElementById("line-5").textContent = "$ " + lineTotal5.toFixed(2);
+
+				// Calculate the sub total 
+				let subTotal = (lineTotal1 + lineTotal2 + lineTotal3 + lineTotal4 + lineTotal5);
+				// Display sub total to screen to 2 decimal places
+				document.getElementById("sub-total").textContent = "$ " + subTotal.toFixed(2);
+
+				// Calculate the discount 
+				let discount = (subTotal > discountThreshold) ? (subTotal * discountRate) : 0;
+				// Display discount to screen to 2 decimal places
+				document.getElementById("discount").textContent = "$ " + discount.toFixed(2);
+
+				// Calculate tax 
+				let tax = subTotal * taxRate;
+				// Display tax to screen to 2 decimal places
+				document.getElementById("tax").textContent = "$ " + tax.toFixed(2);
+
+			    /* 2. Calculate the total */
+				let total = subTotal - discount + tax;
+				// Display the total to screen to 2 decimal places
+				document.getElementById("Total").textContent = "$ " + total.toFixed(2);
+	    };
+
+		document.getElementById("calculate").addEventListener("click", calculate);
+    </script>
+</body>
+</html>
